@@ -38,6 +38,7 @@ public class AuthController{
  
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
     UsuarioService usuarioService;
@@ -45,6 +46,7 @@ public class AuthController{
     RolService rolService;
     @Autowired
     JwtProvider jwtProvider;
+    
     
     @PostMapping("/nuevo")
     
@@ -71,6 +73,8 @@ public class AuthController{
         return new ResponseEntity(new Mensaje("usuario guardado"), HttpStatus.CREATED);
    }
     
+     
+     
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())
