@@ -29,13 +29,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin
-public class AuthController {
+public class AuthController{
+ 
     @Autowired
     PasswordEncoder passwordEncoder;
-    @Autowired
     AuthenticationManager authenticationManager;
     @Autowired
     UsuarioService usuarioService;
@@ -84,4 +86,6 @@ public class AuthController {
         JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
         return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
+    
+    
 }
