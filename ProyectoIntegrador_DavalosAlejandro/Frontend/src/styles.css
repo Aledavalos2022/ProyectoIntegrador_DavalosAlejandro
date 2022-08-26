@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+body{
+    background-color: #a1b5cb !important; 
+  }
+  
+  .container{
+    width: 90% !important;
+  }
+  
+  #section-deco {
+    background-color: #FFFFFF;
+    border-radius: 20px 20px 20px 20px;
+    border: 0.5px solid #F3F2EF;
+    margin-top: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+  
+  .derecha {
+    float: right;
+  }
+  
+  .btn-right i {
+    font-size: 1.0em;
+    width: 1.0em;
+    text-align: center;
+    line-height: 1.6em;
+    background: rgb(249, 250, 249);
+    color: #000;
+    border-radius: 0.8em; /* or 50% width & line-height */
+  }
+  
+  .btn-right i:hover {
+    font-size: 1.6em;
+    width: 1.6em;
+    text-align: center;
+    line-height: 1.6em;
+    background: rgb(3, 3, 3);
+    color: #fff;
+    border-radius: 0.8em;
+    cursor: pointer;
+  
+  }
+  
+  .data_exp, .data_ed{
+    font-size: smaller;
+  }

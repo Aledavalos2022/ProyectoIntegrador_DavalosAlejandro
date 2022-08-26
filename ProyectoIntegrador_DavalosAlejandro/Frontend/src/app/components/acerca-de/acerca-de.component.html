@@ -1,15 +1,154 @@
-<div class="row">
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-        <img src="../../../assets/fotoPerfil.jpg" class="img-fluid" id="fotoperfil">
+<section class="container">
+  <div class="row" id="about-section">
+    <div class="col-xs-12 col-md-3 col-lg-3">
+      <div class="row" id="personal-info">
+        <div class="col">
+          <div *ngIf="persona" id="datos-personal">
+            <img src="../../../assets/{{persona?.img}}" class="img-fluid" id="fotodeperfil">
+            <h1 id="nombre">{{ persona.nombre }} {{ persona.apellido }}</h1>
+            <p id="titulo">{{ persona.titulo }}</p>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-        <p id="nombre">{{persona.nombre}} {{persona.apellido}}</p>
-        <p>Full Stack developer Jr.</p>
+
+    <div *ngIf="persona" class="col-xs-12 col-md-9 col-lg-9" id="acerca">
+      <div class="derecha" *ngIf="isLogged">
+        <!-- boton abrir modal editar informacion en Acerca de  -->
+        <a href="#" 
+          id="myBtn"
+          class="btn-right"
+          data-bs-toggle="modal"
+          data-bs-target="#editAboutModal"
+          (click)="onOpenModal('edit', persona)"
+        >
+          <i class="bi bi-pencil-fill">Editar perfil</i>
+        </a>
+      </div>
+      <span>
+        <h2>Acerca de mi</h2>
+        <p>
+          {{ persona.about }}
+        </p>
+      </span>
     </div>
-    <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
-        <span>
-            <h1>Acerca de mi</h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique cumque consectetur, aperiam reiciendis numquam repellat rem, labore facere repellendus saepe suscipit? Aspernatur suscipit autem, cum voluptatibus molestiae iusto dolorem corporis!</p>         
-        </span>
+    <!-- Notification for no about -->
+    <div *ngIf="!persona" class="col-lg-12 col-md-12 col-xl-12">
+      <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">¡No hay información para mostrar!</h4>
+        <p>No se encontró ningun item en "Acerca de"</p>
+      </div>
     </div>
+  </div>
+</section>
+
+<!-- Edit modal -->
+<div
+  class="modal fade"
+  id="editAboutModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="updateAboutModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateAboutModalLabel">Editar Acerca de</h5>
+      </div>
+      <div class="modal-body">
+        <form #editForm="ngForm">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.nombre }}"
+              name="nombre"
+              class="form-control"
+              id="nombre"
+              aria-describedby="emailHelp"
+              placeholder="Nombres"
+            />
+          </div>
+          <input
+            type="hidden"
+            ngModel="{{ persona?.id }}"
+            name="id"
+            class="form-control"
+            id="id"
+            placeholder=""
+          />
+
+          <div class="form-group">
+            <label for="apellido">Apellido</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.apellido }}"
+              name="apellido"
+              class="form-control"
+              id="apellido"
+              aria-describedby="emailHelp"
+              placeholder="Apellido"
+            />
+          </div>
+         
+          <div class="form-group">
+            <label for="titulo">Titulo/Cargo</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.titulo }}"
+              name="titulo"
+              class="form-control"
+              id="titulo"
+              placeholder="Descripción"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="img">Imagen de perfil</label>
+            <input
+              type="text"
+              ngModel="{{ persona?.img }}"
+              name="img"
+              class="form-control"
+              id="img"
+              placeholder="foto de perfil"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="about">Acerca de</label>
+            <textarea 
+             rows="4"
+             cols="50"
+             name="about"
+             id="about"
+             ngModel="{{ persona?.about }}"
+             value="{{persona?.about}}"
+             class="form-control">{{persona?.about}}</textarea
+            >
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="1"
+              data-bs-dismiss="modal"
+              class="btn btn-secondary"
+            >
+              Cerrar
+            </button>
+            <button
+              type="button"
+              (click)="onUpdateAbout(editForm.value)"
+              data-dismiss="modal"
+              class="btn btn-primary"
+            >
+              Guardar Cambios
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>

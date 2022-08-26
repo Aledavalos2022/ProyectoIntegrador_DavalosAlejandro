@@ -13,9 +13,8 @@ public class ImpPersonaService implements IPersonaService{
     @Autowired IPersonaRepository ipersonarepository;
 
     @Override
-    public List<Persona> getPersona() {
-        List<Persona> persona = ipersonarepository.findAll();
-        return persona;
+    public List<Persona> verPersonas() {
+        return ipersonarepository.findAll();
     }
 
     @Override
@@ -32,6 +31,10 @@ public class ImpPersonaService implements IPersonaService{
     public Persona findPersona(Long id) {
         Persona persona = ipersonarepository.findById(id).orElse(null);
         return persona;        
+    }
+    @Override
+    public Persona editarPersona(Persona persona) {
+        return ipersonarepository.save(persona);
     }
     
 }

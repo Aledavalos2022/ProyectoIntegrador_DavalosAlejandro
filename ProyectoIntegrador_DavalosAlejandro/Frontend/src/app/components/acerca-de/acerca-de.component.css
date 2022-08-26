@@ -1,33 +1,77 @@
-.row{
+.body{
+    background-color: #a1b5cb;  
+  }
+
+  #about-section{
+    border-radius: 0px 0px 20px 20px;
+    border: 0.5px solid #F3F2EF;
+  }
+  
+  .row {
     padding: 20px;
-}
-div{
-    background:#a1b5cb;
+   
+  }
+  
+   #personal-info {
     text-align: center;
+  } 
+  
+  #img-container:hover {
+    cursor: pointer;
+    transform: rotate(5deg);
+  }
+  
+  #img-perfil {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #000000;
+    left: calc(50% - 75px);
+    top: -150px;
+    transition: .1s ease-in;
+    
+  
+  }
+ 
+#acerca{
+  padding: 60px;
 }
-#nombre{
-    font-weight: bold;
-    margin-top: 30%;
+.modal-content{
+  background-color: #a1b5cb
 }
 
-@media (min-width: 576px){
-    #fotoperfil{
-        position: absolute;
-        width:15%;
-        border-radius: 100%;
-        box-shadow: 3px 3px 3px gray;
-        left: 3%;
-        top: 1000px;
-    }
-}
 
-@media (max-width: 575px){
-    #fotoperfil{
-        position: absolute;
-        width:30%;
-        border-radius: 100%;
-        box-shadow: 3px 3px 3px gray;
-        left: 33%;
-        top: 390px;
+  
+  #name {
+    margin-top: 10%;
+    margin-left: 10px;
+  }
+
+ 
+  /** media queries **/
+  @media (min-width: 575px) {
+    .row {
+      max-width: 1440px;
     }
-}
+  
+    #img-container {
+      position: relative;
+      background-color: gray;
+      
+    }
+  
+    #img-perfil {
+      max-width: 200px;
+      max-height: 200px;
+      /* left: 10%; */
+      top: -140px;
+      border-radius: 105px;
+      background-color:darkgray;
+    }
+  
+    #name{
+      margin-top: 10%;
+      
+    }
+  }
