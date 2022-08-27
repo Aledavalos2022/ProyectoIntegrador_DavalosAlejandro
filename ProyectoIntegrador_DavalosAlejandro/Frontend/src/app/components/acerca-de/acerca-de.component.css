@@ -21,16 +21,8 @@
     transform: rotate(5deg);
   }
   
-  #img-perfil {
-    position: absolute;
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #000000;
-    left: calc(50% - 75px);
-    top: -150px;
-    transition: .1s ease-in;
-    
+  #fotodeperfil {
+    border-radius: 105px;
   
   }
  
