@@ -15,3 +15,12 @@
 h1{
     text-decoration: underline;
 }
+
+img.button-icon.edit{
+    width:0.7rem;
+}
+img.button-icon.trash{
+    filter:invert(100%);
+    -webkit-filter:invert(100%);
+    width: 0.68rem;
+}

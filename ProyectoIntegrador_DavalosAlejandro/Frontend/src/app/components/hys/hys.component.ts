@@ -88,7 +88,7 @@ export class HysComponent implements OnInit {
   }
   onDelete(index: number) {
     let skills: Skills = this.skillsList[index];
-    if (confirm('¿Está seguro que desea borrar la educación?')) {
+    if (confirm('¿Está seguro que desea borrar la skill?')) {
       this.skillsService.delete(skills.id).subscribe(() => {
         this.reloadData();
       });
