@@ -8,15 +8,15 @@ import { Persona } from '../model/persona.model';
   providedIn: 'root'
 })
 export class AboutService {
-  private apiServerUrl = environment.apiBaseUrl;
+  URL= 'https://backend-agd.herokuapp.com';
 
   constructor(private http:HttpClient) { }
 
   public getPerson():Observable<Persona>{
-    return this.http.get<Persona>(`${this.apiServerUrl}/ver/personas/1`);
+    return this.http.get<Persona>(`${this.URL}/ver/personas/1`);
   }
 
   public editPerson(persona: Persona): Observable<Persona>{
-    return this.http.put<Persona>(`${this.apiServerUrl}/personas/update`,persona);
+    return this.http.put<Persona>(`${this.URL}/personas/update`,persona);
   }
 }
