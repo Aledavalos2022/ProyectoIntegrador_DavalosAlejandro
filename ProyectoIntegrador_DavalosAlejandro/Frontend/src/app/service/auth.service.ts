@@ -9,7 +9,9 @@ import { NuevoUsuario } from '../model/nuevo-usuario';
   providedIn: 'root'
 })
 export class AuthService {
-  authURL = 'https://backend-agd.herokuapp.com/auth/';
+  //authURL = 'https://backend-agd.herokuapp.com/auth/';
+  authURL = 'http://localhost:8080/auth/';
+
   constructor(private httpClient: HttpClient) { }
 
   public nuevo(nuevoUsuario: NuevoUsuario): Observable<any>{

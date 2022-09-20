@@ -1,9 +1,9 @@
-import { HttpErrorResponse } from '@angular/common/http';
+
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm, Validators } from '@angular/forms';
 import { Skills } from 'src/app/model/skills';
 import { SkillsService } from 'src/app/service/skills.service';
 import { TokenService } from 'src/app/service/token.service';
+
 
 @Component({
   selector: 'app-hys',
@@ -11,87 +11,46 @@ import { TokenService } from 'src/app/service/token.service';
   styleUrls: ['./hys.component.css']
 })
 export class HysComponent implements OnInit {
-  skillsList: Skills[] = [];
-  isLogged = false;
-  skillForm: FormGroup;
+  skills: Skills[] = [];
+
   
 
-  constructor(private skillsService: SkillsService, private tokenService: TokenService, private fb: FormBuilder) {
-    this.skillForm = this.fb.group({
-      id:[''],
-      skillsLevel:['',[Validators.required]],
-      nombreSkill:['',[Validators.required]],
-      imgSkill:['',[Validators.required]]
-   });
-  }
+  constructor(private skillsService: SkillsService, private tokenService: TokenService) {}
+  isLogged = false;
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()) {
+    this.cargarSkills();
+    if(this.tokenService.getToken()){
       this.isLogged = true;
     } else {
       this.isLogged = false;
     }
-    this.reloadData();
+
+  }
+  cargarSkills(): void{
+    this.skillsService.get().subscribe(
+      data => {
+        this.skills = data;
+      }
+    )
   }
 
-  private reloadData() {
-    this.skillsService.get().subscribe((data) => {
-      this.skillsList = data;
-    });
-  }
-  
-  private clearForm() {
-    this.skillForm.setValue({
-      id:'',
-      skillsLevel:'',
-      nombreSkill:'',
-      imgSkill:''
-    });
-  }
-  
-  private loadForm(skills: Skills) {
-    this.skillForm.setValue({
-      id: skills.id,
-     skillsLevel: skills.skillsLevel,
-     nombreSkill: skills.nombreSkill,
-      imgSkill: skills.imgSkill
-    });
-  }
-  onSubmit() {
-    console.log(this.skillForm.value);
-   let skills: Skills = this.skillForm.value;
-   if (this.skillForm.get('id')?.value == '') {
-     this.skillsService.save(skills).subscribe(
-      (nuevaskills:Skills) => {
-         this.skillsList.push(nuevaskills);
-         this.reloadData();
-         this.onNew()
-       });
-   } else {
-    this.skillsService.save(skills).subscribe(
-       (data) => {
-         this.reloadData();
-       },
-       (err) => {
-         alert('Falló');
-       }
-     );
-   }
-  }
-  
-  onNew() {
-    this.clearForm();
-  }
-  onEdit(index: number) {
-    let skills: Skills = this.skillsList[index];
-    this.loadForm(skills);
-  }
-  onDelete(index: number) {
-    let skills: Skills = this.skillsList[index];
-    if (confirm('¿Está seguro que desea borrar la skill?')) {
-      this.skillsService.delete(skills.id).subscribe(() => {
-        this.reloadData();
-      });
+
+
+  delete(id: number){
+    if(id != undefined){
+      var resultado = window.confirm('Estas seguro de eliminar skill?');
+      if (resultado === true) {
+        window.alert('Okay, si estas seguro.');
+        this.skillsService.delete(id).subscribe(
+        data => {
+          this.cargarSkills();
+        }, err => {
+          alert("No se pudo borrar la skill");
+        }
+      )
     }
   }
 }
+  }
+  

@@ -33,12 +33,12 @@
                         data-bs-target="#proyectoForm"
                         (click)="onEdit(i)"
                       >
-                        <img class="button-icon edit" src="../../../assets/edit.png" />
+                        <img class="button-icon edit" src="../../../assets/edit.png" /> Editar
                       </button>
                     </div>
                     <div *ngIf="isLogged" class="container-button">
                       <button class="btn btn-danger" (click)="onDelete(i)">
-                        <i class="bi bi-trash-fill"></i> BORRAR
+                        <i class="bi bi-trash-fill"></i> Borrar
                       </button>
                     </div>
                   </div>
@@ -114,13 +114,6 @@
             required
           />
         </div>
-        <div class="modal-footer">
-          <button 
-          type="button" 
-          class="btn btn-ligth" 
-          data-dismiss="modal">
-            Cerrar
-          </button>
           <button
             type="submit"
             data-bs-toggle="modal"
@@ -129,7 +122,14 @@
           >
             Guardar
           </button>
-        </div>
+          <button
+              type="button"
+              id="1"
+              data-bs-dismiss="modal"
+              class="btn btn-secondary"
+            >
+              Cerrar
+            </button>
       </form>
     </div>
   </div>

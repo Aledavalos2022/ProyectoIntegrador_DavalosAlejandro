@@ -30,6 +30,9 @@ export class ExperienciaComponent implements OnInit {
 
     delete(id?: number){
       if(id != undefined){
+        var resultado = window.confirm('Estas seguro de eliminar experiencia?');
+        if (resultado === true) {
+        window.alert('Okay, si estas seguro.');
         this.sExperiencia.delete(id).subscribe(
           data => {
             this.cargarExperiencia();
@@ -40,3 +43,4 @@ export class ExperienciaComponent implements OnInit {
       }
     }
   }
+}

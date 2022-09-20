@@ -8,7 +8,9 @@ import { Persona } from '../model/persona.model';
   providedIn: 'root'
 })
 export class AboutService {
-  URL= 'https://backend-agd.herokuapp.com';
+  // URL= 'https://backend-agd.herokuapp.com';
+  URL= 'http://localhost:8080';
+
 
   constructor(private http:HttpClient) { }
 

@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/educacion")
-@CrossOrigin(origins = "https://frontend2022-aeae3.web.app")
+//@CrossOrigin(origins = "https://frontend2022-aeae3.web.app")
+@CrossOrigin(origins = "http://localhost:4200")
 public class CEducacion {
     @Autowired
     Seducacion sEducacion;
@@ -48,7 +49,7 @@ public class CEducacion {
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
         }
         sEducacion.delete(id);
-        return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Educación eliminada"), HttpStatus.OK);
     }
     
     @PostMapping("/create")
@@ -64,7 +65,7 @@ public class CEducacion {
                 dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE()
             );
         sEducacion.save(educacion);
-        return new ResponseEntity(new Mensaje("Educacion creada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Educación creada"), HttpStatus.OK);
                 
     }
     
@@ -87,6 +88,6 @@ public class CEducacion {
         
         sEducacion.save(educacion);
         
-        return new ResponseEntity(new Mensaje("Educacion actualizada"), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Educación actualizada"), HttpStatus.OK);
     }
 }

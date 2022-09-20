@@ -1,130 +1,42 @@
 <div class="row">
-  <div class="col-lg-12 container-skills">
+
     <h1>Hard & Soft skills</h1>
-  <!-- Botón para agregar nueva educación -->
-  </div>
-  <button
-  type="button"
-  class="btn btn-circle btn-dark redondo"
-  data-toggle="modal"
-  data-target="#skillForm"
-  *ngIf="isLogged"
-  (click)="onNew()"
->Agregar skills
-</button>
-  <div class="skills-container" >
-    <div class="circle-container" *ngFor="let skills of skillsList; let i = index" cdkDrag>
-      <div class="container-circleimg">
-        <circle-progress
-        [percent]="skills.skillsLevel"
-        [maxPercent]="100"
+    <div class="col-lg-2">
+        <button type="button" routerLink="/newskill" class="btn btn-dark" *ngIf="isLogged">Nueva Skill</button>
+    </div>
+
+
+    <div class="text-center col-sm-4 col-md-4 col-lg-4 circulo" *ngFor="let skills of skills">
+        <circle-progress 
+        [percent]="(skills.skillsLevel)" 
+        [radius]="90" [imageSrc]="''" 
+        [title]="(skills.nombreSkill)"
+        [titleColor]="'#212F3C'"
+        [showTitle]="true" 
+        [showImage]="false" 
+        [imageHeight]="70" 
+        [responsive]="true"
+        [imageWidth]="70" 
         [showUnits]="false"
-        [title]="skills.nombreSkill"
-        [showTitle]="true"
-        [showSubtitle]="false"
-        [titleColor]= "'white'"
-        [titleFontSize]="'16px'"
-        [titleFontWeight]="'600'"
-        [radius]="70"
-        [outerStrokeWidth]="6"
-        [innerStrokeWidth]="2"
-        [outerStrokeColor]="'#fff'"
-        [innerStrokeColor]="'#fff'"
-        [animation]="true"
-        [animationDuration]="800"
-      >        
-    </circle-progress>
-    <div class="container-buttonIcon">
-      <div *ngIf="isLogged" class="container-button">
-        <button
-          class="btn btn-light"
-          data-bs-toggle="modal"
-          data-bs-target="#skillForm"
-          (click)="onEdit(i)"
-        >
-          <img class="button-icon edit" src="../../../assets/edit.png" />
-        </button>
-      </div>
-      <div *ngIf="isLogged" class="container-button">
-        <button class="btn btn-danger" (click)="onDelete(i)">
-          <i class="bi bi-trash-fill"></i> BORRAR</button>
-      </div>
-    </div>
+        [showSubtitle]="false" 
+        [outerStrokeWidth]="16" 
+        [innerStrokeWidth]="2" 
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'" 
+        [animation]="true" 
+        [animationDuration]="600">
+        </circle-progress>
+
+        <div id="boton">
+            <td *ngIf="isLogged">
+                <button class="btn btn-light" routerLink="/editskill/{{skills.id}}">
+                    <i class="bi bi-pencil-fill"></i></button>
+            </td>
+            <td *ngIf="isLogged">
+                <button class="btn btn-danger" (click)="delete(skills.id)">
+                    <i class="bi bi-trash-fill"></i></button>
+            </td>
+        </div>
         
-      </div>
-  </div>
-  </div>
-
-
-<!-- MODAL HSkills -->
-<div
-  class="modal fade"
-  id="skillForm"
-  tabindex="-1"
-  aria-labelledby="skillFormLabel"
-  aria-hidden="true"
->
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title" id="skillFormLabel">
-        Hard & Soft Skills
-      </h4>
-      <button type="button" class="btn-close" data-dismiss="modal"></button>
     </div>
-    <div class="modal-body">
-      <form [formGroup]="skillForm" (ngSubmit)="onSubmit()">
-        <input type="hidden" name="id" formControlName="id" />
-        <div class="form-group">
-          <label for="nombreSkill">Skill</label>
-          <input
-            type="text"
-            name="nombreSkill"
-            id="nombreSkill"
-            class="form-control"
-            formControlName="nombreSkill"
-            required
-          />
-        </div>
-        <div class="form-group">
-          <label for="skillsLevel">Skills Level</label>
-          <div class="slidercontainer">
-            <input
-            type="range"
-            min="0"
-            max="100"
-            step="1"
-            value="80"
-            formControlName="skillsLevel"
-            name="skillsLevel"
-            id="skillsLevel"
-            class="form-control level"
-            oninput="slider()"
-            required
-          />
-          <span id="f">0</span>
-          </div>
-        </div> 
-       <script> const mySlider = document.getElementById("skillsLevel");
-                const sliderValue = document.getElementById("f");
-                function slider(){
-                      valPercent = (mySlider.value / mySlider.max)*100;
-                        mySlider.style.background = `linear-gradient(to right, #3264fe ${valPercent}%, #d5d5d5 ${valPercent}%)`;
-                        sliderValue.textContent = mySlider.value;} slider(); 
-          </script>
-        <div class="modal-footer">
-          <button
-            type="submit"
-            data-bs-toggle="modal"
-            id="btnGuardar"
-            class="btn btn-dark"
-          >
-            Guardar
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-</div>
 </div>

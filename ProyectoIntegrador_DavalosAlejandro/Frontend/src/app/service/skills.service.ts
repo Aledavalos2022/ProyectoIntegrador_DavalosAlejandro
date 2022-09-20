@@ -7,7 +7,8 @@ import { Skills } from '../model/skills';
   providedIn: 'root'
 })
 export class SkillsService {
-  URL= 'https://backend-agd.herokuapp.com/skills/';
+  //URL= 'https://backend-agd.herokuapp.com/skills/';
+  URL= 'http://localhost:8080/skills/';
 
   constructor(private http: HttpClient) { }
 
@@ -24,8 +25,8 @@ export class SkillsService {
     return this.http.post<any>(this.URL + 'create', skills);
   }
 
-  public edit(skills: Skills): Observable<any>{
-    return this.http.put<any>(this.URL + 'update', skills);
+  public edit(id: number, skills: Skills): Observable<any>{
+    return this.http.put<any>(this.URL + `update/${id}`, skills);
   }
 
   public delete(id: number): Observable<any>{

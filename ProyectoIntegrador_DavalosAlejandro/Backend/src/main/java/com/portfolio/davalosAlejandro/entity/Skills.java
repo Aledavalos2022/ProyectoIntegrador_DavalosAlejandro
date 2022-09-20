@@ -22,24 +22,22 @@ public class Skills {
     @Column(name="nombre_skill")
     private String nombreSkill;
     
-    @Column(name="img_skill")
-    private String imgSkill;
+    //@Column(name="img_skill")
+   // private String imgSkill;
     //Constructor
 
     public Skills() {
     }
 
-    public Skills(int skillsLevel, String nombreSkill, String imgSkill) {
-        this.skillsLevel = skillsLevel;
-        this.nombreSkill = nombreSkill;
-        this.imgSkill = imgSkill;
-    }
-    
-    public Skills(int id, int skillsLevel, String nombreSkill, String imgSkill) {
+    public Skills(int id, int skillsLevel, String nombreSkill) {
         this.id = id;
         this.skillsLevel = skillsLevel;
         this.nombreSkill = nombreSkill;
-        this.imgSkill = imgSkill;
+    }
+
+    public Skills(int skillsLevel, String nombreSkill) {
+        this.skillsLevel = skillsLevel;
+        this.nombreSkill = nombreSkill;
     }
 
 }
