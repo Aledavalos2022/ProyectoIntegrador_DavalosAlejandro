@@ -1,0 +1,13 @@
+.container{
+    padding: 50px;
+}
+
+#atras{
+    border-style: outset;
+    margin-top: 20px;
+    margin-left: 12px;
+    background-color: #a6c6eb;
+    width: 100px;
+    height: 35px;
+  }
+

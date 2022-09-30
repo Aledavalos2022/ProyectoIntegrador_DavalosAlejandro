@@ -1,5 +1,5 @@
-export interface Proyecto {
-    id: number;
+export class Proyecto {
+    id?: number;
     titulo:string;
     descripcion:string;
     imgUrl:string;
