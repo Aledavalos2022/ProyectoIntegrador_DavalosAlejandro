@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { Router } from '@angular/router';
 import { Proyecto } from 'src/app/model/proyecto';
 import { ProyectosService } from 'src/app/service/proyectos.service';
 import { TokenService } from 'src/app/service/token.service';
@@ -16,7 +17,7 @@ export class ProyectoComponent implements OnInit {
 
   constructor(private proyectoService: ProyectosService,
     private tokenService: TokenService,
-    private fb: FormBuilder) { this.proyectoForm = this.fb.group({
+    private fb: FormBuilder, private router: Router) { this.proyectoForm = this.fb.group({
       id: [''],
       titulo: ['',[Validators.required]],
       descripcion:['', [Validators.required]],
