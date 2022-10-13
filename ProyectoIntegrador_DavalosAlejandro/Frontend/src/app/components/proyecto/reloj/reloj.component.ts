@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RelojComponent implements OnInit {
 
+
   constructor() { }
 
   ngOnInit(): void {
+   
   }
 
+  
 }

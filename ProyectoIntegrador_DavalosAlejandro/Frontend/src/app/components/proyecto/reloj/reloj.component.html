@@ -1,36 +1,24 @@
 <!DOCTYPE html>
-<html lang="en" routerLink="/reloj">
-
-<head>
-  <meta charset="utf-8">
-  <title>Test</title>
-  <link rel="stylesheet" href="reloj.component.css">
+<html>
+<head routerLink="/reloj">
+	<title></title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="reloj.component.css">
 </head>
-
 <body>
-
-<div class="container">
-
-  <div class="watch">
-
-    <div class="outer">
-      <div class="inner">
-        <span class=" text hour">00 :</span>
-        <span class=" text min">&nbsp;00:</span>
-        <span class=" text sec">&nbsp;00</span>
-      </div>
-    </div>
-
-    <div class="btns">
-      <button class="start">Start</button>
-      <button class="stop">Stop</button>
-      <button class="reset">Reset</button>
-    </div>
-
-  </div>
-
-</div>
-<script src="script.js" charset="utf-8"></script>
+	<div class="flex">
+		<div class="contenido">
+			<div class="reloj">
+				<img src="../reloj/aguja.png" id="horas">
+				<img src="agujaMinutos.png" id="minutos">
+				<img src="agujaSegundos.png" id="segundos">
+			</div>
+		</div>
+		<div class="contenido">
+			<h4 id="h4-content">¡Hora actual!</h4>
+			<p id="p-content"></p>
+		</div>
+	</div>
+<script src="script.js"></script>
 </body>
-
 </html>

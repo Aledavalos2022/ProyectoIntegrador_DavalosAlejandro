@@ -1,41 +1,24 @@
-let start = document.querySelector(".start");
-let stop = document.querySelector(".stop");
-let reset = document.querySelector(".reset");
-let hours = document.querySelector(".hour");
-let mins = document.querySelector(".min");
-let secs = document.querySelector(".sec");
-let hour = 0;
-let min = 0;
-let sec = 0;
-
-let interval;
-
-start.addEventListener("click", function () {
-  interval = setInterval(function () {
-    if (sec < 59) {
-      sec += 1;
-      secs.innerHTML = sec < 10 ? " 0" + sec : sec;
-    } else {
-      sec = 0;
-      secs.innerHTML = sec < 10 ? " 0" + sec : sec;
-      if (min < 59) {
-        min += 1;
-        mins.innerHTML = min < 10 ? "0" + min + ":" : min + ":";
-      } else {
-        hour += 1;
-        hours.innerHTML = hour < 10 ? "0" + hour + ":" : hour + ":";
-      }
+function reloj() {
+	time = new Date();
+	horas = time.getHours();
+	minutos = time.getMinutes();
+	segundos = time.getSeconds();
+    
+    if (horas >= 12) {
+     	porcentajeHoras = horas / 12 * 360;
+    }  else {
+    	porcentajeHoras = horas / 24 * 360;
     }
-  }, 1000);
 
-  start.style.pointerEvents = "none";
-});
+    porcentajeHoras += minutos / 60 * 30;
+    porcentajeMinutos = minutos / 60 * 360;
+    porcentajeSegundos = segundos / 60 * 360;
 
-stop.addEventListener("click", function () {
-  clearInterval(interval);
-  start.style.pointerEvents = "visible";
-});
+    document.getElementById("horas").style.transform = "rotate("+ porcentajeHoras +"deg)";
+    document.getElementById("minutos").style.transform = "rotate("+ porcentajeMinutos +"deg)";
+    document.getElementById("segundos").style.transform = "rotate("+ porcentajeSegundos +"deg)";
+    document.getElementById("p-content").innerHTML = horas + ":" + minutos + ":" + segundos; 
+}
 
-reset.addEventListener("click", function () {
-  location.reload();
-});
+
+setInterval(reloj, 1000);
