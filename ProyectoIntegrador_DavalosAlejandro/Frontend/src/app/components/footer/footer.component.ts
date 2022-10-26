@@ -1,7 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Persona } from 'src/app/model/persona.model';
-import { AboutService } from 'src/app/service/about.service';
+import { PersonaService } from 'src/app/service/persona.service';
 import { TokenService } from 'src/app/service/token.service';
 
 @Component({
@@ -12,14 +12,14 @@ import { TokenService } from 'src/app/service/token.service';
 export class FooterComponent implements OnInit {
   public persona: Persona | undefined;
 
-  constructor(private aboutService: AboutService, private tokenService: TokenService) { }
+  constructor(private personaService: PersonaService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
     this.getPerson();
   }
 
   public getPerson(): void {
-    this.aboutService.getPerson().subscribe({
+    this.personaService.detail(1).subscribe({
       next: (response: Persona) => {
         this.persona = response;
       },

@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html>
-<head routerLink="/reloj">
+<head>
 	<title></title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="reloj.component.css">
+  <base href="/reloj">
 </head>
 <body>
 	<div class="flex">
 		<div class="contenido">
 			<div class="reloj">
-				<img src="../reloj/aguja.png" id="horas">
-				<img src="agujaMinutos.png" id="minutos">
-				<img src="agujaSegundos.png" id="segundos">
+				<img src="../reloj/aguja.png" id="horas" alt="">
+				<img src="../reloj/agujaMinutos.png" id="minutos" alt="">
+				<img src="agujaSegundos.png" id="segundos" alt="">
 			</div>
 		</div>
 		<div class="contenido">
@@ -19,6 +20,6 @@
 			<p id="p-content"></p>
 		</div>
 	</div>
-<script src="script.js"></script>
+<script src="../reloj/script.js"></script>
 </body>
 </html>

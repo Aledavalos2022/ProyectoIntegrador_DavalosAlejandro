@@ -25,6 +25,10 @@ import { EditSkillComponent } from './components/hys/edit-skill.component';
 import { NewSkillComponent } from './components/hys/new-skill.component';
 import { CalcComponent } from './components/proyecto/calc/calc.component';
 import { RelojComponent } from './components/proyecto/reloj/reloj.component';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { provideStorage,getStorage } from '@angular/fire/storage';
+import { EditAcercaDeComponent } from './components/acerca-de/edit-acerca-de.component';
 
 
 
@@ -51,6 +55,7 @@ import { RelojComponent } from './components/proyecto/reloj/reloj.component';
     NewSkillComponent,
     CalcComponent,
     RelojComponent,
+    EditAcercaDeComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,7 +63,9 @@ import { RelojComponent } from './components/proyecto/reloj/reloj.component';
     NgCircleProgressModule.forRoot({}),
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideStorage(() => getStorage())
   ],
   providers: [
     interceptorProvider

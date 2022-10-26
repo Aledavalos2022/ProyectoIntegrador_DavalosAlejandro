@@ -7,7 +7,7 @@
     margin-right: 0.5em;
 }
 #logoAP{
-    width: 150px;
+    width: 200px;
 }
 img{
     width: 50px;
@@ -27,5 +27,11 @@ img{
 }
 .redes img{
     margin: 00.2em;
+}
+img{
+    width: 40px;
+}
+#logoAP{
+    width: 200px;
 }
 }
