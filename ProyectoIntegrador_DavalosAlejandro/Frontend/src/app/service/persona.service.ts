@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PersonaService {
-  URL= 'https://backend-agd.herokuapp.com/';
+  URL= 'https://backend-agd.herokuapp.com/'+ 'personas/';
   //URL= 'http://localhost:8080/'+ 'personas/';
 
   constructor(private httpClient: HttpClient) { }
