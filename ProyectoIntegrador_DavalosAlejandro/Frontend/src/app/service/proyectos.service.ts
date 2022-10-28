@@ -7,8 +7,8 @@ import { Proyecto } from '../model/proyecto';
   providedIn: 'root'
 })
 export class ProyectosService {
-  //URL= 'https://backend-agd.herokuapp.com/proyectos/';
-  URL= 'http://localhost:8080/proyectos/';
+  URL= 'https://backend-agd.herokuapp.com/proyectos/';
+  //URL= 'http://localhost:8080/proyectos/';
 
   constructor(private http: HttpClient) { }
 

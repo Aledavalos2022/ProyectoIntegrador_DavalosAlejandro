@@ -7,8 +7,8 @@ import { Skills } from '../model/skills';
   providedIn: 'root'
 })
 export class SkillsService {
-  //URL= 'https://backend-agd.herokuapp.com/skills/';
-  URL= 'http://localhost:8080/skills/';
+  URL= 'https://backend-agd.herokuapp.com/skills/';
+  //URL= 'http://localhost:8080/skills/';
 
   constructor(private http: HttpClient) { }
 
