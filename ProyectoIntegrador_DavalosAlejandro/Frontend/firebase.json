@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/proyecto-integrador-davalos-alejandro",
+    "public": "dist\\proyecto-integrador-davalos-alejandro",
     "ignore": [
       "firebase.json",
       "**/.*",
